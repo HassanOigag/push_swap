@@ -6,29 +6,11 @@
 /*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 14:50:23 by hoigag            #+#    #+#             */
-/*   Updated: 2023/01/29 15:20:33 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/01/31 20:39:35 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ft_putstr(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-}
-
-void	error_log(void)
-{
-	ft_putstr("Error\n");
-	exit(1);
-}
 
 t_node	*new_node(int value)
 {
@@ -58,20 +40,53 @@ void	push(t_node **top, int value)
 	}
 }
 
-void	print_stck(t_node *stack)
+t_node	*pop(t_node **top)
+{
+	t_node	*node;
+
+	node = *top;
+	if (!node)
+		return (0);
+	*top = node->next;
+	node->next = 0;
+	return (node);
+}
+
+void	print_stack(t_node *stack_a, t_node *stack_b)
 {
 	t_node	*tmp;
+	t_node	*tmp2;
 
-	tmp = stack;
-	if (!tmp)
-	{
-		printf("empty stack\n");
-		return ;
-	}
+	tmp = stack_a;
+	tmp2 = stack_b;
+	ft_printf("\n");
 	while (tmp)
 	{
-		printf("%d\n", tmp->value);
+		if (tmp2 && tmp)
+			ft_printf("%d | %d\n", tmp->value, tmp2->value);
+		else if (tmp)
+			ft_printf("%d | \n", tmp->value);
+		else if (tmp2)
+			ft_printf("   | %d\n", tmp2->value);
+		tmp = tmp->next;
+		if (tmp2)
+			tmp2 = tmp2->next;
+	}
+	ft_printf("-----\n");
+	ft_printf("a | b\n");
+}	
+
+int	get_stack_length(t_node *stack)
+{
+	t_node	*tmp;
+	int		size;
+
+	tmp = stack;
+	size = 0;
+	while (tmp)
+	{
+		size++;
 		tmp = tmp->next;
 	}
-	printf("stack\n");
+	return (size);
 }
