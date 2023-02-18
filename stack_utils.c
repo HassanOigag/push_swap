@@ -6,7 +6,7 @@
 /*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 14:50:23 by hoigag            #+#    #+#             */
-/*   Updated: 2023/01/31 20:39:35 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/02/18 21:26:48 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,41 +24,36 @@ t_node	*new_node(int value)
 	return (node);
 }
 
-void	push(t_node **top, int value)
+void	push(t_node **top, t_node *new_node)
 {
-	t_node	*new;
-
-	new = new_node(value);
-	if (!new)
-		error_log();
 	if (! *top)
-		*top = new;
+		*top = new_node;
 	else
 	{
-		new->next = *top;
-		*top = new;
+		new_node->next = *top;
+		*top = new_node;
 	}
 }
 
-t_node	*pop(t_node **top)
+t_node	*pop(t_node **stack)
 {
-	t_node	*node;
+	t_node	*top;
 
-	node = *top;
-	if (!node)
+	top = *stack;
+	if (!top)
 		return (0);
-	*top = node->next;
-	node->next = 0;
-	return (node);
+	*stack = top->next;
+	top -> next = 0;
+	return (top);
 }
 
-void	print_stack(t_node *stack_a, t_node *stack_b)
+void	print_stack(t_stacks *stacks)
 {
 	t_node	*tmp;
 	t_node	*tmp2;
 
-	tmp = stack_a;
-	tmp2 = stack_b;
+	tmp = stacks->stack_a;
+	tmp2 = stacks->stack_b;
 	ft_printf("\n");
 	while (tmp)
 	{

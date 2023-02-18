@@ -6,7 +6,7 @@
 /*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 14:18:30 by hoigag            #+#    #+#             */
-/*   Updated: 2023/02/18 18:49:03 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/02/18 23:46:14 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,27 @@ void	print_one_stack(t_node *stack)
 	}
 }
 
+static void	init_stacks(t_stacks *stacks, char **args)
+{
+	stacks->stack_b = 0;
+	stacks->stack_a = array_to_stack(args);
+	if (check_for_duplicates(stacks->stack_a))
+		error_log();
+	push(&stacks->stack_b, new_node(0));
+}
+
 int	main(int argc, char **argv)
 {
-	t_node	*stack_a;
-	// t_node	*stack_b;
-	char	**args;
+	t_stacks	stacks;
+	char		**args;
 
 	if (argc == 1)
 		return (0);
-	// stack_b = 0;
 	args = get_args(argv + 1, argc - 1);
-	stack_a = array_to_stack(args);
-	if (check_for_duplicates(stack_a))
-		error_log();
-	print_one_stack(stack_a);
-	// if (check_for_duplicates(stack_a))
-	// 	error_log();
-	// print_stack(stack_a, stack_b);
-	// pop_and_push(&stack_a, &stack_b);
-	// ft_printf("%d\n", stack_b->value);
-	// print_stack(stack_a, stack_b);
+	init_stacks(&stacks, args);
+	print_stack(&stacks);
+	rrr(&stacks);
+	print_stack(&stacks);
+	while (1);
 	return (0);
 }

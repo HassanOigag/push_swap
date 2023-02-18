@@ -1,7 +1,7 @@
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 NAME = push_swap
-SRCS = main.c stack_utils.c helper_functions.c check_args.c operations.c
+SRCS = main.c stack_utils.c helper_functions.c check_args.c rules.c rules2.c rules3.c
 OBJS = $(SRCS:.c=.o)
 
 %.o : %.c

@@ -6,11 +6,22 @@
 /*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:45:15 by hoigag            #+#    #+#             */
-/*   Updated: 2023/02/18 18:46:12 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/02/18 20:22:56 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	free_stack(t_node **stack)
+{
+	t_node	*tmp;
+
+	while (*stack)
+	{
+		tmp = pop(stack);
+		free(tmp);
+	}
+}
 
 static int	check_if_elem_in_stack(t_node *stack, int value)
 {
@@ -30,23 +41,32 @@ int	check_for_duplicates(t_node	*stack)
 {
 	t_node	*dups;
 	t_node	*tmp;	
+	t_node	*new;
 
 	tmp = stack;
 	dups = 0;
 	while (tmp)
 	{
 		if (check_if_elem_in_stack(dups, tmp->value))
+		{
+			free_stack(&dups);
 			return (1);
+		}
 		else
-			push(&dups, tmp->value);
+		{
+			new = new_node(tmp->value);
+			push(&dups, new);
+		}
 		tmp = tmp->next;
 	}
+	free_stack(&dups);
 	return (0);
 }
 
 t_node	*array_to_stack(char **arr)
 {
 	t_node	*stack;
+	t_node	*new;
 	int		end;
 	long	n;
 
@@ -57,12 +77,18 @@ t_node	*array_to_stack(char **arr)
 	end--;
 	while (end >= 0)
 	{
+		if (ft_strlen(arr[end]) > 11)
+			error_log();
 		n = ft_atoi_v2(arr[end]);
 		if (n > INT_MAX || n < INT_MIN)
 			error_log();
-		push(&stack, n);
+		new = new_node(n);
+		if (!new)
+			error_log();
+		push(&stack, new);
 		end--;
 	}
+	free_args(arr);
 	return (stack);
 }
 
