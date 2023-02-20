@@ -6,7 +6,7 @@
 /*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:45:15 by hoigag            #+#    #+#             */
-/*   Updated: 2023/02/18 20:22:56 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/02/20 22:37:33 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,8 @@ t_node	*array_to_stack(char **arr)
 	end--;
 	while (end >= 0)
 	{
-		if (ft_strlen(arr[end]) > 11)
-			error_log();
 		n = ft_atoi_v2(arr[end]);
-		if (n > INT_MAX || n < INT_MIN)
+		if ((n > INT_MAX || n < INT_MIN) && ft_strlen(arr[end]) > 11)
 			error_log();
 		new = new_node(n);
 		if (!new)
@@ -103,7 +101,7 @@ char	**get_args(char **argv, int n)
 	str = 0;
 	while (i < n)
 	{
-		arg = ft_strtrim(argv[i], " ");
+		arg = ft_strtrim(argv[i], " \t");
 		if (!arg[0])
 			error_log();
 		arg = ft_strjoin(arg, " ");
