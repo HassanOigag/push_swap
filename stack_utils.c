@@ -6,7 +6,7 @@
 /*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 14:50:23 by hoigag            #+#    #+#             */
-/*   Updated: 2023/02/18 21:26:48 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/02/20 14:54:48 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_node	*pop(t_node **stack)
 	return (top);
 }
 
-void	print_stack(t_stacks *stacks)
+void	print_stacks(t_stacks *stacks)
 {
 	t_node	*tmp;
 	t_node	*tmp2;

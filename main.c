@@ -6,7 +6,7 @@
 /*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 14:18:30 by hoigag            #+#    #+#             */
-/*   Updated: 2023/02/18 23:46:14 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/02/20 18:40:48 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static void	init_stacks(t_stacks *stacks, char **args)
 	stacks->stack_a = array_to_stack(args);
 	if (check_for_duplicates(stacks->stack_a))
 		error_log();
-	push(&stacks->stack_b, new_node(0));
 }
 
 int	main(int argc, char **argv)
@@ -42,9 +41,13 @@ int	main(int argc, char **argv)
 		return (0);
 	args = get_args(argv + 1, argc - 1);
 	init_stacks(&stacks, args);
-	print_stack(&stacks);
-	rrr(&stacks);
-	print_stack(&stacks);
-	while (1);
+	if (is_stack_sorted(stacks.stack_a))
+		return (0);
+	print_stacks(&stacks);
+	if (get_stack_length(stacks.stack_a) == 2 && stacks.stack_a->value == get_max(stacks.stack_a))
+		sa(&stacks);
+	else if (get_stack_length(stacks.stack_a) == 3)
+		sort_3_numbers(&stacks);
+	print_stacks(&stacks);
 	return (0);
 }

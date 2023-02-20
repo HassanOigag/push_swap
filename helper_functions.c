@@ -6,7 +6,7 @@
 /*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:07:16 by hoigag            #+#    #+#             */
-/*   Updated: 2023/02/18 19:42:04 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/02/20 18:31:54 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,44 @@ void	free_args(char **args)
 		i++;
 	}
 	free(args);
+}
+
+int	get_max(t_node *stack)
+{
+	int		i;
+	int		max;
+	t_node	*tmp;
+
+	if (!stack)
+		return (-1);
+	i = 0;
+	tmp = stack;
+	max = stack->value;
+	while (tmp)
+	{
+		if (tmp->value > max)
+			max = tmp->value;
+		tmp = tmp->next;
+	}
+	return (max);
+}
+
+int	get_min(t_node *stack)
+{
+	int		i;
+	int		min;
+	t_node	*tmp;
+
+	if (!stack)
+		return (-1);
+	i = 0;
+	tmp = stack;
+	min = stack->value;
+	while (tmp)
+	{
+		if (tmp->value < min)
+			min = tmp->value;
+		tmp = tmp->next;
+	}
+	return (min);
 }
