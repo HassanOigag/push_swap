@@ -6,7 +6,7 @@
 /*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 20:23:15 by hoigag            #+#    #+#             */
-/*   Updated: 2023/02/18 22:55:03 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/02/22 14:29:55 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,29 @@ void	ss(t_stacks *stacks)
 	swap(&stacks->stack_a);
 	swap(&stacks->stack_b);
 	ft_printf("ss\n");
+}
+
+int	get_max_index(t_node *stack)
+{
+	int		i;
+	int		max;
+	t_node	*tmp;
+	int		index;
+
+	if (!stack)
+		return (-1);
+	i = 0;
+	tmp = stack;
+	max = stack->value;
+	while (tmp)
+	{
+		if (tmp->value >= max)
+		{
+			max = tmp->value;
+			index = i;
+		}
+		i++;
+		tmp = tmp->next;
+	}
+	return (index);
 }

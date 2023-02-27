@@ -6,7 +6,7 @@
 /*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 14:44:40 by hoigag            #+#    #+#             */
-/*   Updated: 2023/02/20 18:31:00 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/02/22 21:18:19 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	error_log(void);
 void	free_args(char **args);
 int		get_max(t_node *stack);
 int		get_min(t_node *stack);
+int		get_max_index(t_node *stack);
+int		get_min_index(t_node *stack);
 
 //*checking arguments
 t_node	*array_to_stack(char **arr);
@@ -66,4 +68,6 @@ void	rrr(t_stacks *stacks);
 
 //*sorting functions
 void	sort_3_numbers(t_stacks *stacks);
+void	sort_5_numbers(t_stacks *stacks);
+void	sort_100_numbers(t_stacks *stacks);
 #endif

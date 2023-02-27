@@ -12,7 +12,7 @@ all : $(NAME)
 $(NAME) : $(OBJS)
 	make -C ./printf all
 	make -C ./libft all
-	$(CC) $(CFLAGS) $^ -L./libft -lft -L./printf -lftprintf -o $@
+	$(CC) $(CFLAGS) $^ -L./libft -lft -L./printf -lftprintf -o $@ -g
 
 clean : 
 	make -C ./printf clean

@@ -6,7 +6,7 @@
 /*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:45:15 by hoigag            #+#    #+#             */
-/*   Updated: 2023/02/20 22:37:33 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/02/20 23:18:24 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ char	**get_args(char **argv, int n)
 	str = 0;
 	while (i < n)
 	{
-		arg = ft_strtrim(argv[i], " \t");
+		arg = ft_strtrim(argv[i], " ");
 		if (!arg[0])
 			error_log();
 		arg = ft_strjoin(arg, " ");
