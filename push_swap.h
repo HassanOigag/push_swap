@@ -6,7 +6,7 @@
 /*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 14:44:40 by hoigag            #+#    #+#             */
-/*   Updated: 2023/02/22 21:18:19 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/03/01 16:23:43 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	ss(t_stacks *stacks);
 void	pa(t_stacks *stacks);
 void	pb(t_stacks *stacks);
 void	ra(t_stacks	*stacks);
+void	rb(t_stacks	*stacks);
 void	rra(t_stacks *stacks);
 void	rrb(t_stacks *stacks);
 void	rrr(t_stacks *stacks);
@@ -69,5 +70,6 @@ void	rrr(t_stacks *stacks);
 //*sorting functions
 void	sort_3_numbers(t_stacks *stacks);
 void	sort_5_numbers(t_stacks *stacks);
-void	sort_100_numbers(t_stacks *stacks);
+void	sort_100_numbers(t_stacks *stacks, int *sorted_array);
+int		*get_sorted_array(char **argv, int size);
 #endif

@@ -6,7 +6,7 @@
 /*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:56:55 by hoigag            #+#    #+#             */
-/*   Updated: 2023/02/27 17:07:48 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/03/01 20:49:49 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,22 +75,53 @@ void	sort_5_numbers(t_stacks *stacks)
 	pa(stacks);
 }
 
-void	sort_100_numbers(t_stacks *stacks)
+void	sort_100_numbers(t_stacks *stacks, int *sorted_array)
 {
-	int	min_index;
+	int	size;
+	int	magic;
+	int	magic_index;
+	int	i;
 	int	middle;
+	int range;
 
+	i = 1;
+	range = 4;
+	size = get_stack_length(stacks->stack_a);
+	while (i <= range - 1)
+	{
+		magic_index = (size / range) * i;
+		magic = sorted_array[magic_index];
+		while (get_stack_length(stacks->stack_b) != magic_index + 1)
+		{
+			if (stacks->stack_a->value <= magic)
+				pb(stacks);
+			else
+				ra(stacks);
+		}
+		i++;
+	}
+	i = 0;
 	while (stacks->stack_a)
 	{
-		min_index = get_min_index(stacks->stack_a);
 		middle = get_stack_length(stacks->stack_a) / 2;
-		if (min_index == 0)
+		if (stacks->stack_a->value == get_min(stacks->stack_a))
 			pb(stacks);
-		else if (min_index >= middle)
+		else if (get_min_index(stacks->stack_a) >= middle)
 			rra(stacks);
-		else if (min_index < middle)
+		else
 			ra(stacks);
 	}
+
 	while (stacks->stack_b)
-		pa(stacks);
+	{
+		middle = get_stack_length(stacks->stack_b) / 2;
+		if (stacks->stack_b->value == get_max(stacks->stack_b))
+			pa(stacks);
+		else if (get_max_index(stacks->stack_a) >= middle)
+			rrb(stacks);
+		else
+			rb(stacks);
+	}
+	// print_one_stack(stacks->stack_a);
 }
+	
