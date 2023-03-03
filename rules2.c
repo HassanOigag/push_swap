@@ -6,11 +6,11 @@
 /*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 22:14:47 by hoigag            #+#    #+#             */
-/*   Updated: 2023/02/18 23:07:56 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/03/03 23:21:41 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap.h" 
 
 void	pa(t_stacks *stacks)
 {	
@@ -59,11 +59,3 @@ void	rb(t_stacks	*stacks)
 	rotate(&stacks->stack_b);
 	ft_printf("rb\n");
 }
-
-void	rr(t_stacks *stacks)
-{	
-	rotate(&stacks->stack_a);
-	rotate(&stacks->stack_b);
-	ft_printf("rr\n");
-}
-	

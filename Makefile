@@ -1,7 +1,7 @@
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 NAME = push_swap
-SRCS = main.c stack_utils.c helper_functions.c check_args.c rules.c rules2.c rules3.c push_swap.c bubble_sort.c
+SRCS = main.c stack_utils.c helper_functions.c check_args.c rules.c rules2.c rules3.c push_swap.c bubble_sort.c sort_huge_stacks.c
 OBJS = $(SRCS:.c=.o)
 
 %.o : %.c
@@ -10,8 +10,8 @@ OBJS = $(SRCS:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	make -C ./printf all
-	make -C ./libft all
+	@make -C ./printf all
+	@make -C ./libft all
 	$(CC) $(CFLAGS) $^ -L./libft -lft -L./printf -lftprintf -o $@
 
 clean : 

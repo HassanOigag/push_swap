@@ -6,7 +6,7 @@
 /*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 17:24:00 by hoigag            #+#    #+#             */
-/*   Updated: 2023/02/28 17:25:47 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/03/03 20:25:47 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,16 @@ static int	*bubble_sort(int *tab, int size)
 		i++;
 	}
 	return (tab);
+}
+
+int	ascending(int a, int b)
+{
+	return (a > b);
+}
+
+int	descending(int a, int b)
+{
+	return (a < b);
 }
 
 int	*get_sorted_array(char **argv, int size)

@@ -6,7 +6,7 @@
 /*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 14:18:30 by hoigag            #+#    #+#             */
-/*   Updated: 2023/03/03 16:45:49 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/03/03 20:34:43 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,32 +32,36 @@ static void	init_stacks(t_stacks *stacks, char **args)
 		error_log();
 }
 
+static void	sort(t_stacks *stacks, int *sorted_tab)
+{
+	int	length;
+
+	length = get_stack_length(stacks->stack_a);
+	if (length == 2)
+		sa(stacks);
+	else if (length == 3)
+		sort_3_numbers(stacks);
+	else if (length <= 10)
+		sort_5_numbers(stacks);
+	else if (length <= 100)
+		sort_big_numbers(stacks, sorted_tab, 0, 15);
+	else
+		sort_big_numbers(stacks, sorted_tab, 0, 30);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stacks	stacks;
 	char		**args;
-	int			length;
 	int			*sorted_tab;
 
 	if (argc == 1)
 		return (0);
 	args = get_args(argv + 1, argc - 1);
 	init_stacks(&stacks, args);
-	if (is_stack_sorted(stacks.stack_a))
+	if (is_stack_sorted(stacks.stack_a, ascending))
 		return (0);
-	length = get_stack_length(stacks.stack_a);
 	sorted_tab = get_sorted_array(argv + 1, argc - 1);
-	// print_stacks(&stacks);
-	if (length == 2)
-		sa(&stacks);
-	else if (length == 3)
-		sort_3_numbers(&stacks);	
-	else if (length <= 10)
-		sort_5_numbers(&stacks);
-	else if (length <= 100)
-		sort_big_numbers(&stacks, sorted_tab, 0, 15);
-	else
-		sort_big_numbers(&stacks, sorted_tab, 0, 30);
-	// print_stacks(&stacks);
+	sort(&stacks, sorted_tab);
 	return (0);
 }
