@@ -6,7 +6,7 @@
 /*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:56:55 by hoigag            #+#    #+#             */
-/*   Updated: 2023/03/01 20:49:49 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/03/03 16:04:50 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,49 +75,55 @@ void	sort_5_numbers(t_stacks *stacks)
 	pa(stacks);
 }
 
-void	sort_100_numbers(t_stacks *stacks, int *sorted_array)
+int	get_index_in_sorted_array(int *sorted, int size, int n)
 {
-	int	size;
-	int	magic;
-	int	magic_index;
 	int	i;
-	int	middle;
-	int range;
 
-	i = 1;
-	range = 4;
-	size = get_stack_length(stacks->stack_a);
-	while (i <= range - 1)
+	i = 0;
+	while (i < size)
 	{
-		magic_index = (size / range) * i;
-		magic = sorted_array[magic_index];
-		while (get_stack_length(stacks->stack_b) != magic_index + 1)
-		{
-			if (stacks->stack_a->value <= magic)
-				pb(stacks);
-			else
-				ra(stacks);
-		}
+		if (sorted[i] == n)
+			break ;
 		i++;
 	}
-	i = 0;
-	while (stacks->stack_a)
-	{
-		middle = get_stack_length(stacks->stack_a) / 2;
-		if (stacks->stack_a->value == get_min(stacks->stack_a))
-			pb(stacks);
-		else if (get_min_index(stacks->stack_a) >= middle)
-			rra(stacks);
-		else
-			ra(stacks);
-	}
+	return (i);
+}
 
-	while (stacks->stack_b)
+void	sort_big_numbers(t_stacks *stacks, int *sorted_array, int start, int end)
+{
+	int		size;
+	int		top;
+	int		index;
+
+	size = get_stack_length(stacks->stack_a);
+	while (get_stack_length(stacks->stack_a))
+	{
+		top = stacks->stack_a->value;
+		index = get_index_in_sorted_array(sorted_array, size, top);
+		if (index >= start && index <= end)
+		{
+			pb(stacks);
+			start++;
+			end++;
+		}
+		else if (index > end)
+			ra(stacks);
+		else
+		{
+			pb(stacks);
+			rb(stacks);
+			start++;
+			end++;
+		}
+	}
+	int middle;
+	middle = 0;
+	while (get_stack_length(stacks->stack_b))
 	{
 		middle = get_stack_length(stacks->stack_b) / 2;
 		if (stacks->stack_b->value == get_max(stacks->stack_b))
 			pa(stacks);
-		else if (get_max_index(stacks->stack_a) >= middle)
+		else if (get_max_index(stacks->stack_b) > middle)
 			rrb(stacks);
 		else
 			rb(stacks);
