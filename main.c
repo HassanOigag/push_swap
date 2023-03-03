@@ -6,7 +6,7 @@
 /*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 14:18:30 by hoigag            #+#    #+#             */
-/*   Updated: 2023/02/28 18:45:03 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/03/03 16:45:49 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,10 @@ int	main(int argc, char **argv)
 		sort_3_numbers(&stacks);	
 	else if (length <= 10)
 		sort_5_numbers(&stacks);
+	else if (length <= 100)
+		sort_big_numbers(&stacks, sorted_tab, 0, 15);
 	else
-		sort_100_numbers(&stacks, sorted_tab);
+		sort_big_numbers(&stacks, sorted_tab, 0, 30);
 	// print_stacks(&stacks);
 	return (0);
 }
