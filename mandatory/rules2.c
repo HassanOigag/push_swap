@@ -6,7 +6,7 @@
 /*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 22:14:47 by hoigag            #+#    #+#             */
-/*   Updated: 2023/03/03 23:21:41 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/03/04 23:16:37 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	rotate(t_node **stack)
 	t_node	*top;
 	t_node	*tmp;
 
-	if (! *stack)
+	if (! *stack || get_stack_length(*stack) == 1)
 		return ;
 	top = pop(stack);
 	tmp = *stack;

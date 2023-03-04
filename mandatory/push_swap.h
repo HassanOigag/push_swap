@@ -6,7 +6,7 @@
 /*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 14:44:40 by hoigag            #+#    #+#             */
-/*   Updated: 2023/03/03 23:03:17 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/03/04 23:39:22 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define PUSH_SWAP_H
 # include <stdlib.h>
 # include <unistd.h>
-# include "./printf/ft_printf.h"
-# include "./libft/libft.h"
+# include "../my_libs/printf/ft_printf.h"
+# include "../my_libs/libft/libft.h"
 # include <stdio.h>
 # include <limits.h>
 //* structs
