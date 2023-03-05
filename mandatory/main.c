@@ -6,7 +6,7 @@
 /*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 14:18:30 by hoigag            #+#    #+#             */
-/*   Updated: 2023/03/03 20:34:43 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/03/05 14:42:09 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	sort(t_stacks *stacks, int *sorted_tab)
 		sa(stacks);
 	else if (length == 3)
 		sort_3_numbers(stacks);
-	else if (length <= 10)
+	else if (length <= 5)
 		sort_5_numbers(stacks);
 	else if (length <= 100)
 		sort_big_numbers(stacks, sorted_tab, 0, 15);

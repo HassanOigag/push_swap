@@ -6,7 +6,7 @@
 /*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:56:55 by hoigag            #+#    #+#             */
-/*   Updated: 2023/03/03 20:28:18 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/03/05 15:43:39 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,20 @@ void	sort_3_numbers(t_stacks *stacks)
 void	sort_5_numbers(t_stacks *stacks)
 {
 	int	min_index;
+	int	min;
+	int	middle;
 
 	while (get_stack_length(stacks->stack_a) != 3)
 	{
+		min = get_min(stacks->stack_a);
 		min_index = get_min_index(stacks->stack_a);
-		if (min_index == 0)
+		middle = get_stack_length(stacks->stack_a) / 2;
+		if (stacks->stack_a->value == min)
 			pb(stacks);
-		else if (min_index >= 2)
+		else if (min_index > middle)
 			rra(stacks);
-		else if (min_index < 2)
-			sa(stacks);
+		else
+			ra(stacks);
 	}
 	if (!is_stack_sorted(stacks->stack_a, ascending))
 		sort_3_numbers(stacks);
