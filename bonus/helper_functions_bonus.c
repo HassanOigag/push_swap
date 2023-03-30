@@ -6,7 +6,7 @@
 /*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 11:13:14 by hoigag            #+#    #+#             */
-/*   Updated: 2023/03/30 12:06:57 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/03/30 12:17:18 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ long	ft_atoi_v2(const char *str, char **arr)
 		i++;
 	}
 	if (!str[i])
-		free_quit();
+		exit_free(arr);
 	while (str[i])
 	{
 		if (!(str[i] >= '0' && str[i] <= '9'))
-			freequit();
+			exit_free(arr);
 		res = res * 10 + (str[i] - '0');
 		if (res * sign > INT_MAX || res * sign < INT_MIN)
-			freequit();
+			exit_free(arr);
 		i++;
 	}
 	return (sign * res);
