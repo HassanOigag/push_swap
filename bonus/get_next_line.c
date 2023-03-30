@@ -75,7 +75,7 @@ static char	*get_new_stash(char *stash)
 	i = 0;
 	while (stash[i] && stash[i] != '\n')
 		i++;
-	if (!stash[i])
+	if (!stash[i] || !stash[i + 1])
 	{
 		free(stash);
 		return (0);
