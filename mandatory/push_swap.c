@@ -16,6 +16,8 @@ int	is_stack_sorted(t_node *stack, int (*comp)(int, int))
 {
 	t_node	*tmp;
 
+	if (!stack)
+		return (0);
 	tmp = stack;
 	while (tmp->next)
 	{

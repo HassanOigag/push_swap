@@ -87,5 +87,6 @@ int	main(int argc, char **argv)
 		free(rule);
 	}
 	free_stack(&stacks.stack_a);
+	free_stack(&stacks.stack_b);
 	return (0);
 }
