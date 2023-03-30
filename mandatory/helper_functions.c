@@ -18,7 +18,7 @@ void	error_log(void)
 	exit(1);
 }
 
-long	ft_atoi_v2(const char *str)
+long	ft_atoi_v2(const char *str, char **arr)
 {
 	int		i;
 	long	res;
@@ -34,14 +34,23 @@ long	ft_atoi_v2(const char *str)
 		i++;
 	}
 	if (!str[i])
+	{
+		free_args(arr);
 		error_log();
+	}
 	while (str[i])
 	{
 		if (!(str[i] >= '0' && str[i] <= '9'))
+		{
+			free_args(arr);
 			error_log();
+		}
 		res = res * 10 + (str[i] - '0');
 		if (res * sign > INT_MAX || res * sign < INT_MIN)
+		{
+			free_args(arr);
 			error_log();
+		}
 		i++;
 	}
 	return (sign * res);

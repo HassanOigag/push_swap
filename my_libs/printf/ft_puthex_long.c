@@ -20,7 +20,7 @@ void	ft_puthex_long(unsigned long n, int isupper, int *counter)
 		str_base = "0123456789ABCDEF";
 	else
 		str_base = "0123456789abcdef";
-	if (n >= 0 && n < 16)
+	if (n < 16)
 		ft_putchar(str_base[n], counter);
 	else
 	{

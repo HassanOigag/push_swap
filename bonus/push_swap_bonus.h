@@ -40,7 +40,7 @@ char	*get_next_line(int fd);
 t_node	*new_node(int value);
 void	push(t_node **top, t_node *new);
 t_node	*pop(t_node **top);
-long	ft_atoi_v2(const char *str);
+long	ft_atoi_v2(const char *str, char **arr);
 void	error_log(void);
 void	free_args(char **args);
 t_node	*array_to_stack(char **arr);
@@ -48,7 +48,7 @@ char	**get_args(char **argv, int n);
 int		check_for_duplicates(t_node *stack);
 int		is_stack_sorted(t_node *stack, int (*comp)(int, int));
 int		get_stack_length(t_node *stack);
-
+void	free_stack(t_node **stack);
 //* rules
 void	rotate(t_node **stack);
 void	sa(t_stacks *stacks);

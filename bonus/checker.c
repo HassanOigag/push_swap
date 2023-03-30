@@ -40,7 +40,12 @@ static void	execute_rule(t_stacks *stacks, char *rule)
 	else if (ft_strncmp(rule, "rrr\n", 4) == 0)
 		rrr(stacks);
 	else
+	{
+		free(rule);
+		free_stack(&stacks->stack_a);
+		free_stack(&stacks->stack_b);
 		error_log();
+	}
 }
 
 static void	init_stacks(t_stacks *stacks, char **args)
@@ -48,7 +53,10 @@ static void	init_stacks(t_stacks *stacks, char **args)
 	stacks->stack_b = 0;
 	stacks->stack_a = array_to_stack(args);
 	if (check_for_duplicates(stacks->stack_a))
+	{
+		free_stack(&stacks->stack_a);
 		error_log();
+	}
 }
 
 int	main(int argc, char **argv)
@@ -75,5 +83,6 @@ int	main(int argc, char **argv)
 		execute_rule(&stacks, rule);
 		free(rule);
 	}
+	free_stack(&stacks.stack_a);
 	return (0);
 }

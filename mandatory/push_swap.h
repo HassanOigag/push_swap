@@ -16,7 +16,6 @@
 # include <unistd.h>
 # include "../my_libs/printf/ft_printf.h"
 # include "../my_libs/libft/libft.h"
-# include <stdio.h>
 # include <limits.h>
 //* structs
 typedef struct s_node
@@ -42,13 +41,14 @@ void	print_one_stack(t_node *stack);
 int		is_stack_sorted(t_node *stack, int (*comp)(int, int));
 
 //*helper functions
-long	ft_atoi_v2(const char *str);
+long	ft_atoi_v2(const char *str, char **arr);
 void	error_log(void);
 void	free_args(char **args);
 int		get_max(t_node *stack);
 int		get_min(t_node *stack);
 int		get_max_index(t_node *stack);
 int		get_min_index(t_node *stack);
+void	free_stack(t_node **stack);
 
 //*checking arguments
 t_node	*array_to_stack(char **arr);

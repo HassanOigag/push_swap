@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static void	free_stack(t_node **stack)
+void	free_stack(t_node **stack)
 {
 	t_node	*tmp;
 
@@ -77,7 +77,7 @@ t_node	*array_to_stack(char **arr)
 	end--;
 	while (end >= 0)
 	{
-		n = ft_atoi_v2(arr[end]);
+		n = ft_atoi_v2(arr[end], arr);
 		new = new_node(n);
 		if (!new)
 			error_log();
@@ -101,7 +101,11 @@ char	**get_args(char **argv, int n)
 	{
 		arg = ft_strtrim(argv[i], " ");
 		if (!arg[0])
+		{
+			free(arg);
+			free(str);
 			error_log();
+		}
 		arg = ft_strjoin(arg, " ");
 		str = ft_strjoin(str, arg);
 		free((void *) arg);
