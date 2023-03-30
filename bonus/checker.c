@@ -6,7 +6,7 @@
 /*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 10:55:29 by hoigag            #+#    #+#             */
-/*   Updated: 2023/03/05 14:43:01 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/03/30 12:08:51 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 static int	ascending(int a, int b)
 {
 	return (a > b);
+}
+
+static void	exit_quit(t_stacks *stacks, char *rule)
+{
+	free(rule);
+	free_stack(&stacks->stack_a);
+	free_stack(&stacks->stack_b);
+	error_log();
 }
 
 static void	execute_rule(t_stacks *stacks, char *rule)
@@ -40,12 +48,7 @@ static void	execute_rule(t_stacks *stacks, char *rule)
 	else if (ft_strncmp(rule, "rrr\n", 4) == 0)
 		rrr(stacks);
 	else
-	{
-		free(rule);
-		free_stack(&stacks->stack_a);
-		free_stack(&stacks->stack_b);
-		error_log();
-	}
+		exit_quit(stacks, rule);
 }
 
 static void	init_stacks(t_stacks *stacks, char **args)

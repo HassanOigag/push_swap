@@ -6,16 +6,16 @@
 /*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:07:16 by hoigag            #+#    #+#             */
-/*   Updated: 2023/03/05 18:31:32 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/03/30 12:09:37 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	error_log(void)
+static void	exit_free(char **arr)
 {
-	ft_putstr_fd("Error\n", 2);
-	exit(1);
+	free_args(arr);
+	error_log();
 }
 
 long	ft_atoi_v2(const char *str, char **arr)
@@ -34,23 +34,14 @@ long	ft_atoi_v2(const char *str, char **arr)
 		i++;
 	}
 	if (!str[i])
-	{
-		free_args(arr);
-		error_log();
-	}
+		exit_free(arr);
 	while (str[i])
 	{
 		if (!(str[i] >= '0' && str[i] <= '9'))
-		{
-			free_args(arr);
-			error_log();
-		}
+			exit_free(arr);
 		res = res * 10 + (str[i] - '0');
 		if (res * sign > INT_MAX || res * sign < INT_MIN)
-		{
-			free_args(arr);
-			error_log();
-		}
+			exit_free(arr);
 		i++;
 	}
 	return (sign * res);

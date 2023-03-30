@@ -6,22 +6,16 @@
 /*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 14:18:30 by hoigag            #+#    #+#             */
-/*   Updated: 2023/03/29 17:21:13 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/03/30 12:03:03 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_one_stack(t_node *stack)
+void	error_log(void)
 {
-	t_node	*tmp;
-
-	tmp = stack;
-	while (tmp)
-	{
-		ft_printf("%d\n", tmp->value);
-		tmp = tmp -> next;
-	}
+	ft_putstr_fd("Error\n", 2);
+	exit(1);
 }
 
 static void	init_stacks(t_stacks *stacks, char **args)
