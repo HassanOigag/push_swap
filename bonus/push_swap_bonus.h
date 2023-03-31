@@ -40,7 +40,7 @@ char	*get_next_line(int fd);
 t_node	*new_node(int value);
 void	push(t_node **top, t_node *new);
 t_node	*pop(t_node **top);
-long	ft_atoi_v2(const char *str, char **arr);
+long	ft_atoi_v2(const char *str, char **arr, t_node *stack);
 void	error_log(void);
 void	free_args(char **args);
 t_node	*array_to_stack(char **arr);

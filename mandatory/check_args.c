@@ -77,7 +77,7 @@ t_node	*array_to_stack(char **arr)
 	end--;
 	while (end >= 0)
 	{
-		n = ft_atoi_v2(arr[end], arr);
+		n = ft_atoi_v2(arr[end], arr, stack);
 		new = new_node(n);
 		if (!new)
 			error_log();
@@ -108,7 +108,7 @@ char	**get_args(char **argv, int n)
 		}
 		arg = ft_strjoin(arg, " ");
 		str = ft_strjoin(str, arg);
-		free((void *) arg);
+		free(arg);
 		i++;
 	}
 	args = ft_split(str, ' ');

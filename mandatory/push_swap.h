@@ -35,13 +35,11 @@ typedef struct s_stacks
 t_node	*new_node(int value);
 void	push(t_node **top, t_node *new);
 t_node	*pop(t_node **top);
-void	print_stacks(t_stacks *stack_a);
 int		get_stack_length(t_node *stack);
-void	print_one_stack(t_node *stack);
 int		is_stack_sorted(t_node *stack, int (*comp)(int, int));
 
 //*helper functions
-long	ft_atoi_v2(const char *str, char **arr);
+long	ft_atoi_v2(const char *str, char **arr, t_node *stack);
 void	error_log(void);
 void	free_args(char **args);
 int		get_max(t_node *stack);

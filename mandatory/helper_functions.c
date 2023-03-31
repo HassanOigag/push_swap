@@ -12,13 +12,14 @@
 
 #include "push_swap.h"
 
-static void	exit_free(char **arr)
+static void	exit_free(char **arr, t_node *stack)
 {
 	free_args(arr);
+	free_stack(&stack);
 	error_log();
 }
 
-long	ft_atoi_v2(const char *str, char **arr)
+long	ft_atoi_v2(const char *str, char **arr, t_node *stack)
 {
 	int		i;
 	long	res;
@@ -34,14 +35,14 @@ long	ft_atoi_v2(const char *str, char **arr)
 		i++;
 	}
 	if (!str[i])
-		exit_free(arr);
+		exit_free(arr, stack);
 	while (str[i])
 	{
 		if (!(str[i] >= '0' && str[i] <= '9'))
-			exit_free(arr);
+			exit_free(arr, stack);
 		res = res * 10 + (str[i] - '0');
 		if (res * sign > INT_MAX || res * sign < INT_MIN)
-			exit_free(arr);
+			exit_free(arr, stack);
 		i++;
 	}
 	return (sign * res);
